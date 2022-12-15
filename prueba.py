@@ -109,7 +109,7 @@ url = 'https://www.youtube.com/'
 host = re.search(r'https://([^/?:]*)', url).group(1)
 print(host) """
 
-
+""" 
 import os
 import re
 from oscrypto import tls
@@ -150,7 +150,7 @@ for i in c:
             print(i.key_usage_value.native)
             print(i.key_identifier_value)
         except Exception as e:
-            print("ERROR")
+            print("ERROR") """
     
 
 
@@ -191,11 +191,13 @@ pprint(result) """
 
 
 
-""" import ssl
+import ssl
 import socket
 import OpenSSL
 from pprint import pprint
-import datetime
+from datetime import datetime
+
+import re
 
 
 def get_certificate(host, port=443, timeout=10):
@@ -213,19 +215,25 @@ def get_certificate(host, port=443, timeout=10):
 certificate = get_certificate('www.unsa.edu.pe')
 x509 = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM, certificate)
 
+
+x = x509.get_notAfter()
+notAfter = re.sub('Z', "", x)
+print(notAfter)
 result = {
     'subject': dict(x509.get_subject().get_components()),
     'issuer': dict(x509.get_issuer().get_components()),
     'serialNumber': x509.get_serial_number(),
     'version': x509.get_version(),
-    #'notBefore': datetime.datetime.strptime(str(x509.get_notBefore()), '%Y%m%d%H%M%SZ'),
-    #'notAfter': datetime.datetime.strptime(str(x509.get_notAfter()), '%Y%m%d%H%M%SZ'),
+    #'notBefore': datetime.strptime(x509.get_notBefore(), '%Y%m%d%H%M%S'),
+    #'notAfter': datetime.strptime(x509.get_notAfter(), '%Y%m%d%H%M%S'),
 }
 
 extensions = (x509.get_extension(i) for i in range(x509.get_extension_count()))
 extension_data = {e.get_short_name(): str(e) for e in extensions}
-#result.update(extension_data)
-pprint(extension_data.get(b'basicConstraints')) """
+result.update(extension_data)
+#pprint(extension_data.get(b'basicConstraints'))
+
+pprint(result)
 
 
 
@@ -252,7 +260,7 @@ with socket.create_connection((hostname, port)) as sock:
 print(certificate['notBefore']) """
 
 
-
+""" 
 from flask import Flask, render_template, request
 from urllib.parse import urlparse
 from flask import flash
@@ -431,6 +439,7 @@ def verificateReporitory(url):
 
 print(verificateReporitory('www.steamcommunity.com'))
 
+ """
 
 
 

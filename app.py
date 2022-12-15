@@ -13,37 +13,32 @@ def index():
 @app.route('/validate', methods=['POST','GET'])
 def validate():
     if request.method == 'POST':
-            auxurl = request.form['url']
-            url = urlparse(auxurl).netloc
-            si = 'url is valid'
-            no = 'url isnot valid'
-            if (auxurl == ''):
-                flash("Empty field enter a url","danger")
-                return redirect('/')
+        auxurl = request.form['url']
+        url = urlparse(auxurl).netloc
+        si = 'url is valid'
+        no = 'url isnot valid'
+        if (auxurl == ''):
+            flash("Empty field enter a url","danger")
+            return redirect('/')
 
-            elif(isValidURL(auxurl) == True):
-                # get certificate 
-                cert = certificatessl(url)
-                # get issuer, not before/not after
-                infoCD = visualizationCD(url)
-                # get public key
-                key =  publicKey(url)
-                # get basic Constraints
-                bC = basicConstraints(url)
-                
-                root = certificateRoot(url)
+        elif(isValidURL(auxurl) == True):
 
-                verificar = verificateReporitory(url)
-                flash("the url was validated successfully","success")
-                return render_template(
-                'validate.html', sn = si, url = auxurl ,cert = cert,  infoCD = infoCD, key = key, bC = bC,
-                root1 = hex(root.__getitem__(0).serial_number), root2 = hex(root.__getitem__(1).serial_number),  
-                verificar = verificar)
-                """ verificar = verificar.get('bool_mozilla') """
-            else:
-                flash("the url was not validated correctly","error")
-                return render_template('validate.html', sn = no)
-        
+            infoCD = visualizationCD(url)
+            key =  publicKey(url)
+            bC = basicConstraints(url)
+
+            root = certificateRoot(url)
+
+            verificar = verificateReporitory(url)
+            flash("the url was validated successfully","success")
+            return render_template(
+            'validate.html', sn = si, url = auxurl ,  infoCD = infoCD, key = key, bC = bC,
+            root1 = hex(root.__getitem__(0).serial_number), root2 = hex(root.__getitem__(1).serial_number),
+            verificar = verificar)
+        else:
+            flash("the url was not validated correctly","error")
+            return render_template('validate.html', sn = no)
+
 @app.route('/TrustStoreChrome/')
 def TrustStoreChrome():
     loadCertificates()
@@ -63,7 +58,7 @@ def TrustStoreEdge():
     loadCertificates()
     certificate = CERT.get('edgeCertificates')
     return render_template('TrustStoreEdge.html',certificate = certificate, count=len(CERT.get('edgeCertificates')))
-        
+
 
 UPLOAD_FOLDER = './TrustStore'
 ALLOWED_EXTENSIONS = {'txt'}
@@ -79,7 +74,6 @@ def allowed_file(filename):
 
 class Form():
     file= FileField()
-
 @app.route('/uploadFile', methods=['POST','GET'])
 def uploadFile():
     f = request.files['file']
@@ -106,25 +100,15 @@ def show():
     aux = request.form.get('url')
     if isValidURL(aux) == True:
         url = urlparse(aux).netloc
-        # get certificate 
-
-        cert = certificatessl(url)
-        
-        # get issuer, not before/not after
         infoCD = visualizationCD(url)
-        # get public key
         key =  publicKey(url)
-        # get basic Constraints
         bC = basicConstraints(url)
-        # root certitificate
         root = certificateRoot(url)
-    return render_template("showInfo.html", root1 = hex(root.__getitem__(0).serial_number), 
-    root2 = hex(root.__getitem__(1).serial_number),  aux = aux ,url = url , cert = cert,  
-    infoCD = infoCD, key = key, bC = bC)
-
+        return render_template("showInfo.html", root1 = hex(root.__getitem__(0).serial_number),
+        root2 = hex(root.__getitem__(1).serial_number),  aux = aux ,url = url ,
+        infoCD = infoCD, key = key, bC = bC)
 
 app.jinja_env.globals.update(get_relevant=verificateReporitory)
-
 
 
 if __name__ == '__main__':

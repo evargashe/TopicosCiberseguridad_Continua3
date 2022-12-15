@@ -8,34 +8,33 @@
 
 <div class="container">
   <div class="row">
-      <div class="col-sm">
-          Direccion Web
-      </div>
-      <div class="col-sm">
-          <i class='fa fa-edge red-color' style="font-size:25px;"></i>Microsoft Edge
-      </div>
-      <div class="col-sm">
-          <i class='fa fa-chrome red-color' style="font-size:25px;"></i>Google Chrome
-      </div>
-      <div class="col-sm">
-          <i class='fa fa-firefox red-color' style="font-size:25px;"></i>Mozilla Firefox
-      </div>
-      <div class="col-sm">
-          Action
-      </div>
+    <div class="col-sm">
+      Direccion Web
+    </div>
+    <div class="col-sm">
+      <i class='fa fa-edge red-color' style="font-size:25px;"></i>Microsoft Edge
+    </div>
+    <div class="col-sm">
+      <i class='fa fa-chrome red-color' style="font-size:25px;"></i>Google Chrome
+    </div>
+    <div class="col-sm">
+      <i class='fa fa-firefox red-color' style="font-size:25px;"></i>Mozilla Firefox
+    </div>
+    <div class="col-sm">
+      Action
+    </div>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-      <div class="col-sm">
-          <p>{{ url }}</p>
-      </div>
-      {%set x=get_relevant(url)%}
-      <div class="col-sm">
-          {% if x['bool_edge']==True%}
-          <button type="button" 
-          style="
+    <div class="col-sm">
+      <p>{{ url }}</p>
+    </div>
+    {%set x=get_relevant(url)%}
+    <div class="col-sm">
+      {% if x['bool_edge']==True%}
+      <button type="button" style="
           border-radius: 100%;background-color: green;
           border: none;
           color: green;
@@ -45,8 +44,9 @@
           display: inline-block;
           font-size: 16px;
           margin: 4px 2px;"></button>
-          {% else %}
-          <button type="button" style="
+      <img src='../static/img/seguro_edge.PNG' width="120" height="40" />
+      {% else %}
+      <button type="button" style="
           border-radius: 100%;background-color: red;
           border: none;
           color: red;
@@ -56,12 +56,13 @@
           display: inline-block;
           font-size: 16px;
           margin: 4px 2px;"></button>
-          {% endif %}
-      </div>
-      <div class="col-sm">
-          {% if x['bool_chrome']==True%}
-          <button type="button" 
-          style="
+      <img src='../static/img/noseguro_edge.PNG' width="120" height="40" />
+
+      {% endif %}
+    </div>
+    <div class="col-sm">
+      {% if x['bool_chrome']==True%}
+      <button type="button" style="
           border-radius: 100%;background-color: green;
           border: none;
           color: green;
@@ -71,8 +72,10 @@
           display: inline-block;
           font-size: 16px;
           margin: 4px 2px;"></button>
-          {% else %}
-          <button type="button" style="
+      <img src='../static/img/seguro_chrome.PNG' width="120" height="40" />
+
+      {% else %}
+      <button type="button" style="
           border-radius: 100%;background-color: red;
           border: none;
           color: red;
@@ -82,12 +85,13 @@
           display: inline-block;
           font-size: 16px;
           margin: 4px 2px;"></button>
-          {% endif %}
-      </div>
-      <div class="col-sm">
-          {% if x['bool_mozilla']==True%}
-          <button type="button" 
-          style="
+      <img src='../static/img/noseguro_chrome.PNG' width="120" height="40" />
+
+      {% endif %}
+    </div>
+    <div class="col-sm">
+      {% if x['bool_mozilla']==True%}
+      <button type="button" style="
           border-radius: 100%;background-color: green;
           border: none;
           color: green;
@@ -97,8 +101,10 @@
           display: inline-block;
           font-size: 16px;
           margin: 4px 2px;"></button>
-          {% else %}
-          <button type="button" style="
+      <img src='../static/img/segura_mozilla.PNG' width="120" height="40" />
+
+      {% else %}
+      <button type="button" style="
           border-radius: 100%;background-color: red;
           border: none;
           color: red;
@@ -108,11 +114,13 @@
           display: inline-block;
           font-size: 16px;
           margin: 4px 2px;"></button>
-          {% endif %}
-      </div>        
-      <div class="col-sm">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Ver mas</button>
-      </div>
+      <img src='../static/img/noseguro_mozilla.PNG' width="120" height="40" />
+
+      {% endif %}
+    </div>
+    <div class="col-sm">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Ver mas</button>
+    </div>
 
   </div>
 </div>
@@ -134,10 +142,10 @@
 
       </div>
       <div class="modal-body">
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="inputAddress">Certificate SSL</label>
           <textarea cols="90" rows="10">{{ cert }}</textarea>
-        </div>
+        </div> -->
         <div class="form-row">
           <label for="">Certificate Root</label>
           <div class="form-group col-md-4">

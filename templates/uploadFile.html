@@ -4,20 +4,20 @@
 
 <script>
     function toggleClock() {
-      var myClock = document.getElementById('show');
-      var displaySetting = myClock.style.display;
-      var clockButton = document.getElementById('btn');
-  
-      if (displaySetting == 'block') {
-        myClock.style.display = 'none';
-        clockButton.innerHTML = 'Ver mas';
-      }
-      else {
-        myClock.style.display = 'block';
-        clockButton.innerHTML = 'Ver menos';
-      }
+        var myClock = document.getElementById('show');
+        var displaySetting = myClock.style.display;
+        var clockButton = document.getElementById('btn');
+
+        if (displaySetting == 'block') {
+            myClock.style.display = 'none';
+            clockButton.innerHTML = 'Ver mas';
+        }
+        else {
+            myClock.style.display = 'block';
+            clockButton.innerHTML = 'Ver menos';
+        }
     }
-  </script>
+</script>
 
 
 <div class="container">
@@ -51,82 +51,90 @@
         {%set x=get_relevant(url)%}
         <div class="col-sm">
             {% if x['bool_edge']==True%}
-            <button type="button" 
-            style="
-            border-radius: 100%;background-color: green;
-            border: none;
-            color: green;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;"></button>
+            <button type="button" style="
+                border-radius: 100%;background-color: green;
+                border: none;
+                color: green;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;"></button>
+            <img src='../static/img/seguro_edge.PNG' width="120" height="40" />
             {% else %}
             <button type="button" style="
-            border-radius: 100%;background-color: red;
-            border: none;
-            color: red;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;"></button>
+                border-radius: 100%;background-color: red;
+                border: none;
+                color: red;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;"></button>
+            <img src='../static/img/noseguro_edge.PNG' width="120" height="40" />
+
             {% endif %}
         </div>
         <div class="col-sm">
             {% if x['bool_chrome']==True%}
-            <button type="button" 
-            style="
-            border-radius: 100%;background-color: green;
-            border: none;
-            color: green;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;"></button>
+            <button type="button" style="
+                border-radius: 100%;background-color: green;
+                border: none;
+                color: green;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;"></button>
+            <img src='../static/img/seguro_chrome.PNG' width="120" height="40" />
+
             {% else %}
             <button type="button" style="
-            border-radius: 100%;background-color: red;
-            border: none;
-            color: red;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;"></button>
+                border-radius: 100%;background-color: red;
+                border: none;
+                color: red;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;"></button>
+            <img src='../static/img/noseguro_chrome.PNG' width="120" height="40" />
+
             {% endif %}
         </div>
         <div class="col-sm">
             {% if x['bool_mozilla']==True%}
-            <button type="button" 
-            style="
-            border-radius: 100%;background-color: green;
-            border: none;
-            color: green;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;"></button>
+            <button type="button" style="
+                border-radius: 100%;background-color: green;
+                border: none;
+                color: green;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;"></button>
+            <img src='../static/img/segura_mozilla.PNG' width="120" height="40" />
+
             {% else %}
             <button type="button" style="
-            border-radius: 100%;background-color: red;
-            border: none;
-            color: red;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;"></button>
+                border-radius: 100%;background-color: red;
+                border: none;
+                color: red;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;"></button>
+            <img src='../static/img/noseguro_mozilla.PNG' width="120" height="40" />
+
             {% endif %}
-        </div>        
+        </div>
         <div class="col-sm">
             <form action="/uploadFile/show/" method="post">
                 <input type="text" id="url" name="url" value="{{url}}" hidden />
