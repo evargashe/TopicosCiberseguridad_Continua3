@@ -1,0 +1,53 @@
+<body style="background: rgba(184, 174, 161, 0.479);">
+
+
+    <div class="container">
+
+
+        <div class="row vh-100 justify-content-center align-items-center">
+            <h1 style="font-size: 35px;">
+                Informacion Minima de: {{ aux }}
+            </h1>
+            <div class="form-group">
+                <label for="inputAddress">Certificate SSL</label>
+                <textarea cols="90" rows="10">{{ cert }}</textarea>
+            </div>
+            <div class="form-row">
+                <label for="">Certificate Root</label>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="inputEmail4" placeholder="Email" value="{{root1}}">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="inputPassword4" placeholder="Password"
+                        value="{{root2}}">
+                </div>
+            </div>
+            <div class="col-auto bg-light p-5">
+                <table class="table table-bordered mx-auto d-block">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Issuer Name</th>
+                            <th scope="col">NotBefore / NotAfter</th>
+                            <th scope="col">Public Key</th>
+                            <th scope="col">Basic Constraints</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{ aux }}</th>
+                            <td>{{ infoCD['issuer'] }}</td>
+                            <td>{{ infoCD['notBefore'], infoCD['notAfter'] }}</td>
+                            <td>{{ key }}</td>
+                            <td>{{ bC }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
