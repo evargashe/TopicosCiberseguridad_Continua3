@@ -39,7 +39,7 @@ pip install -r requirements.txt
 py app.py
 ```
 
-* Finalmente, abra el [Manual](http://127.0.0.1:5000) y listo.
+* Finalmente, viste el [http://127.0.0.1:5000](http://127.0.0.1:5000) y listo.
 
 ## Demo
 
